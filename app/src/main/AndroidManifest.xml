@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".PaginaPrincipal"></activity>
-        <activity android:name=".data.jighjdsf"></activity>
+        <activity android:name=".data.jighjdsf" />
         <activity
             android:name=".ui.login.PaginaPrincipal"
             android:label="@string/title_activity_pagina_principal" />
