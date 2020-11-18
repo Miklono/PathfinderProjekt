@@ -9,4 +9,10 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="force">FOR</string>
+    <string name="dexterity">DES</string>
+    <string name="constitution">CON</string>
+    <string name="intelligence">INT</string>
+    <string name="wisdom">SAB</string>
+    <string name="charisma">CAR</string>
 </resources>
