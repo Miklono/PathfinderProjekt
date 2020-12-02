@@ -144,72 +144,6 @@
         android:text="@string/constitution"
         android:textSize="36sp" />
 
-    <EditText
-        android:id="@+id/editFue"
-        android:layout_width="67dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="67dp"
-        android:layout_marginEnd="200dp"
-        android:ems="10"
-        android:inputType="number" />
-
-    <EditText
-        android:id="@+id/editDex"
-        android:layout_width="67dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="163dp"
-        android:layout_marginEnd="200dp"
-        android:ems="10"
-        android:inputType="number" />
-
-    <EditText
-        android:id="@+id/editCon"
-        android:layout_width="67dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="259dp"
-        android:layout_marginEnd="200dp"
-        android:ems="10"
-        android:inputType="number" />
-
-    <EditText
-        android:id="@+id/editInt"
-        android:layout_width="67dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="355dp"
-        android:layout_marginEnd="200dp"
-        android:ems="10"
-        android:inputType="number" />
-
-    <EditText
-        android:id="@+id/editSab"
-        android:layout_width="67dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="451dp"
-        android:layout_marginEnd="200dp"
-        android:ems="10"
-        android:inputType="number" />
-
-    <EditText
-        android:id="@+id/editCar"
-        android:layout_width="67dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="547dp"
-        android:layout_marginEnd="206dp"
-        android:ems="10"
-        android:inputType="number" />
-
     <TextView
         android:id="@+id/puntsText"
         android:layout_width="wrap_content"
@@ -222,14 +156,64 @@
         android:text="Punts:"
         android:textSize="36sp" />
 
-    <Button
-        android:id="@+id/atrButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="42dp"
-        android:text="Atras" />
+    <Spinner
+        android:id="@+id/fueSpin"
+        android:layout_width="94dp"
+        android:layout_height="47dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="67dp" />
+
+    <Spinner
+        android:id="@+id/desSpin"
+        android:layout_width="94dp"
+        android:layout_height="46dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="163dp" />
+
+    <Spinner
+        android:id="@+id/conSpin"
+        android:layout_width="94dp"
+        android:layout_height="46dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="259dp" />
+
+    <Spinner
+        android:id="@+id/intSpin"
+        android:layout_width="94dp"
+        android:layout_height="46dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="355dp" />
+
+    <Spinner
+        android:id="@+id/sabSpin"
+        android:layout_width="94dp"
+        android:layout_height="46dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="451dp" />
+
+    <Spinner
+        android:id="@+id/carSpin"
+        android:layout_width="94dp"
+        android:layout_height="46dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="547dp" />
 
 </RelativeLayout>

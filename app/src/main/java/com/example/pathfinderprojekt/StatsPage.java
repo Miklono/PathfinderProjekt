@@ -6,9 +6,12 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Spinner;
 
 public class StatsPage extends AppCompatActivity {
 
@@ -17,7 +20,6 @@ public class StatsPage extends AppCompatActivity {
     EditText editFue, editDes, editCon, editInt, editSab, editCar;
     Button atrButton;
     static int punts = 25;
-    static int lastOp = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,156 +33,518 @@ public class StatsPage extends AppCompatActivity {
         carText = (TextView)findViewById(R.id.carText);
         puntsText = (TextView)findViewById(R.id.puntsText);
 
-        editFue = (EditText) findViewById(R.id.editFue);
-        editDes = (EditText) findViewById(R.id.editDex);
-        editCon = (EditText) findViewById(R.id.editCon);
-        editInt = (EditText) findViewById(R.id.editInt);
-        editSab = (EditText) findViewById(R.id.editSab);
-        editCar = (EditText) findViewById(R.id.editCar);
+        Spinner fueSpin = (Spinner)findViewById(R.id.fueSpin);
+        ArrayAdapter<CharSequence> fueAdapter = ArrayAdapter.createFromResource(this, R.array.punts, android.R.layout.simple_spinner_item);
+        fueAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        fueSpin.setAdapter(fueAdapter);
+        Spinner desSpin = (Spinner)findViewById(R.id.desSpin);
+        ArrayAdapter<CharSequence> desAdapter = ArrayAdapter.createFromResource(this, R.array.punts, android.R.layout.simple_spinner_item);
+        desAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        desSpin.setAdapter(desAdapter);
+        Spinner conSpin = (Spinner)findViewById(R.id.conSpin);
+        ArrayAdapter<CharSequence> conAdapter = ArrayAdapter.createFromResource(this, R.array.punts, android.R.layout.simple_spinner_item);
+        conAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        conSpin.setAdapter(conAdapter);
+        Spinner intSpin = (Spinner)findViewById(R.id.intSpin);
+        ArrayAdapter<CharSequence> intAdapter = ArrayAdapter.createFromResource(this, R.array.punts, android.R.layout.simple_spinner_item);
+        intAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        intSpin.setAdapter(intAdapter);
+        Spinner sabSpin = (Spinner)findViewById(R.id.sabSpin);
+        ArrayAdapter<CharSequence> sabAdapter = ArrayAdapter.createFromResource(this, R.array.punts, android.R.layout.simple_spinner_item);
+        sabAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sabSpin.setAdapter(sabAdapter);
+        Spinner carSpin = (Spinner)findViewById(R.id.carSpin);
+        ArrayAdapter<CharSequence> carAdapter = ArrayAdapter.createFromResource(this, R.array.punts, android.R.layout.simple_spinner_item);
+        carAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        carSpin.setAdapter(carAdapter);
 
-        atrButton = (Button)findViewById(R.id.atrButton);
+        fueSpin.setSelection(3);
+        desSpin.setSelection(3);
+        conSpin.setSelection(3);
+        intSpin.setSelection(3);
+        sabSpin.setSelection(3);
+        carSpin.setSelection(3);
 
-        editFue.setText("10");
-        editDes.setText("10");
-        editCon.setText("10");
-        editInt.setText("10");
-        editSab.setText("10");
-        editCar.setText("10");
+        puntsText.setText("Puntos: " + punts);
 
-        puntsText.setText("Punts: " + punts);
-
-        atrButton.setOnClickListener(new View.OnClickListener(){
+        fueSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            int lastPunts = 0;
             @Override
-            public void onClick(View v){
-                punts += lastOp;
-                lastOp = 0;
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                int modificador = 0;
+
+                punts += lastPunts;
+
+                switch (position){
+                    case 0:
+                        lastPunts = -4;
+                        modificador = -2;
+                        punts += 4;
+                        break;
+                    case 1:
+                        lastPunts = -2;
+                        modificador = -1;
+                        punts +=2;
+                        break;
+                    case 2:
+                        lastPunts = -1;
+                        modificador = -1;
+                        punts += 1;
+                        break;
+                    case 3:
+                        lastPunts = 0;
+                        modificador = 0;
+                        lastPunts -= 0;
+                        break;
+                    case 4:
+                        lastPunts = 1;
+                        modificador = 0;
+                        punts -= 1;
+                        break;
+                    case 5:
+                        lastPunts = 2;
+                        modificador = 1;
+                        punts -= 2;
+                        break;
+                    case 6:
+                        lastPunts = 3;
+                        modificador = 1;
+                        punts -= 3;
+                        break;
+                    case 7:
+                        lastPunts = 5;
+                        modificador = 2;
+                        punts -= 5;
+                        break;
+                    case 8:
+                        lastPunts = 7;
+                        modificador = 2;
+                        punts -= 7;
+                        break;
+                    case 9:
+                        lastPunts = 10;
+                        modificador = 3;
+                        punts -= 10;
+                        break;
+                    case 10:
+                        lastPunts = 13;
+                        modificador = 3;
+                        punts -=13;
+                        break;
+                    case 11:
+                        lastPunts = 17;
+                        modificador = 4;
+                        punts -=17;
+                        break;
+                }
+                puntsText.setText("Puntos: " + punts);
+                forText.setText(modificador + "");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        desSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            int lastPunts = 0;
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                int modificador = 0;
+
+                punts += lastPunts;
+
+                switch (position){
+                    case 0:
+                        lastPunts = -4;
+                        modificador = -2;
+                        punts += 4;
+                        break;
+                    case 1:
+                        lastPunts = -2;
+                        modificador = -1;
+                        punts +=2;
+                        break;
+                    case 2:
+                        lastPunts = -1;
+                        modificador = -1;
+                        punts += 1;
+                        break;
+                    case 3:
+                        lastPunts = 0;
+                        modificador = 0;
+                        lastPunts -= 0;
+                        break;
+                    case 4:
+                        lastPunts = 1;
+                        modificador = 0;
+                        punts -= 1;
+                        break;
+                    case 5:
+                        lastPunts = 2;
+                        modificador = 1;
+                        punts -= 2;
+                        break;
+                    case 6:
+                        lastPunts = 3;
+                        modificador = 1;
+                        punts -= 3;
+                        break;
+                    case 7:
+                        lastPunts = 5;
+                        modificador = 2;
+                        punts -= 5;
+                        break;
+                    case 8:
+                        lastPunts = 7;
+                        modificador = 2;
+                        punts -= 7;
+                        break;
+                    case 9:
+                        lastPunts = 10;
+                        modificador = 3;
+                        punts -= 10;
+                        break;
+                    case 10:
+                        lastPunts = 13;
+                        modificador = 3;
+                        punts -=13;
+                        break;
+                    case 11:
+                        lastPunts = 17;
+                        modificador = 4;
+                        punts -=17;
+                        break;
+                }
+                puntsText.setText("Puntos: " + punts);
+                dexText.setText(modificador + "");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        conSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            int lastPunts = 0;
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                int modificador = 0;
+
+                punts += lastPunts;
+
+                switch (position){
+                    case 0:
+                        lastPunts = -4;
+                        modificador = -2;
+                        punts += 4;
+                        break;
+                    case 1:
+                        lastPunts = -2;
+                        modificador = -1;
+                        punts +=2;
+                        break;
+                    case 2:
+                        lastPunts = -1;
+                        modificador = -1;
+                        punts += 1;
+                        break;
+                    case 3:
+                        lastPunts = 0;
+                        modificador = 0;
+                        lastPunts -= 0;
+                        break;
+                    case 4:
+                        lastPunts = 1;
+                        modificador = 0;
+                        punts -= 1;
+                        break;
+                    case 5:
+                        lastPunts = 2;
+                        modificador = 1;
+                        punts -= 2;
+                        break;
+                    case 6:
+                        lastPunts = 3;
+                        modificador = 1;
+                        punts -= 3;
+                        break;
+                    case 7:
+                        lastPunts = 5;
+                        modificador = 2;
+                        punts -= 5;
+                        break;
+                    case 8:
+                        lastPunts = 7;
+                        modificador = 2;
+                        punts -= 7;
+                        break;
+                    case 9:
+                        lastPunts = 10;
+                        modificador = 3;
+                        punts -= 10;
+                        break;
+                    case 10:
+                        lastPunts = 13;
+                        modificador = 3;
+                        punts -=13;
+                        break;
+                    case 11:
+                        lastPunts = 17;
+                        modificador = 4;
+                        punts -=17;
+                        break;
+                }
+                puntsText.setText("Puntos: " + punts);
+                conText.setText(modificador + "");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        intSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            int lastPunts = 0;
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                int modificador = 0;
+
+                punts += lastPunts;
+
+                switch (position){
+                    case 0:
+                        lastPunts = -4;
+                        modificador = -2;
+                        punts += 4;
+                        break;
+                    case 1:
+                        lastPunts = -2;
+                        modificador = -1;
+                        punts +=2;
+                        break;
+                    case 2:
+                        lastPunts = -1;
+                        modificador = -1;
+                        punts += 1;
+                        break;
+                    case 3:
+                        lastPunts = 0;
+                        modificador = 0;
+                        lastPunts -= 0;
+                        break;
+                    case 4:
+                        lastPunts = 1;
+                        modificador = 0;
+                        punts -= 1;
+                        break;
+                    case 5:
+                        lastPunts = 2;
+                        modificador = 1;
+                        punts -= 2;
+                        break;
+                    case 6:
+                        lastPunts = 3;
+                        modificador = 1;
+                        punts -= 3;
+                        break;
+                    case 7:
+                        lastPunts = 5;
+                        modificador = 2;
+                        punts -= 5;
+                        break;
+                    case 8:
+                        lastPunts = 7;
+                        modificador = 2;
+                        punts -= 7;
+                        break;
+                    case 9:
+                        lastPunts = 10;
+                        modificador = 3;
+                        punts -= 10;
+                        break;
+                    case 10:
+                        lastPunts = 13;
+                        modificador = 3;
+                        punts -=13;
+                        break;
+                    case 11:
+                        lastPunts = 17;
+                        modificador = 4;
+                        punts -=17;
+                        break;
+                }
+                puntsText.setText("Puntos: " + punts);
+                intText.setText(modificador + "");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        sabSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            int lastPunts = 0;
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                int modificador = 0;
+
+                punts += lastPunts;
+
+                switch (position){
+                    case 0:
+                        lastPunts = -4;
+                        modificador = -2;
+                        punts += 4;
+                        break;
+                    case 1:
+                        lastPunts = -2;
+                        modificador = -1;
+                        punts +=2;
+                        break;
+                    case 2:
+                        lastPunts = -1;
+                        modificador = -1;
+                        punts += 1;
+                        break;
+                    case 3:
+                        lastPunts = 0;
+                        modificador = 0;
+                        lastPunts -= 0;
+                        break;
+                    case 4:
+                        lastPunts = 1;
+                        modificador = 0;
+                        punts -= 1;
+                        break;
+                    case 5:
+                        lastPunts = 2;
+                        modificador = 1;
+                        punts -= 2;
+                        break;
+                    case 6:
+                        lastPunts = 3;
+                        modificador = 1;
+                        punts -= 3;
+                        break;
+                    case 7:
+                        lastPunts = 5;
+                        modificador = 2;
+                        punts -= 5;
+                        break;
+                    case 8:
+                        lastPunts = 7;
+                        modificador = 2;
+                        punts -= 7;
+                        break;
+                    case 9:
+                        lastPunts = 10;
+                        modificador = 3;
+                        punts -= 10;
+                        break;
+                    case 10:
+                        lastPunts = 13;
+                        modificador = 3;
+                        punts -=13;
+                        break;
+                    case 11:
+                        lastPunts = 17;
+                        modificador = 4;
+                        punts -=17;
+                        break;
+                }
                 puntsText.setText("Punts: " + punts);
+                sabText.setText(modificador + "");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
-        editFue.addTextChangedListener(new TextWatcher() {
-            public void afterTextChanged(Editable s) {}
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+        carSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            int lastPunts = 0;
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                int modificador = 0;
 
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.length() >0) {
-                    forText.setText(calcularModificador(s.toString()));
-                } else{
-                    forText.setText("-5");
+                punts += lastPunts;
+
+                switch (position){
+                    case 0:
+                        lastPunts = -4;
+                        modificador = -2;
+                        punts += 4;
+                        break;
+                    case 1:
+                        lastPunts = -2;
+                        modificador = -1;
+                        punts +=2;
+                        break;
+                    case 2:
+                        lastPunts = -1;
+                        modificador = -1;
+                        punts += 1;
+                        break;
+                    case 3:
+                        lastPunts = 0;
+                        modificador = 0;
+                        lastPunts -= 0;
+                        break;
+                    case 4:
+                        lastPunts = 1;
+                        modificador = 0;
+                        punts -= 1;
+                        break;
+                    case 5:
+                        lastPunts = 2;
+                        modificador = 1;
+                        punts -= 2;
+                        break;
+                    case 6:
+                        lastPunts = 3;
+                        modificador = 1;
+                        punts -= 3;
+                        break;
+                    case 7:
+                        lastPunts = 5;
+                        modificador = 2;
+                        punts -= 5;
+                        break;
+                    case 8:
+                        lastPunts = 7;
+                        modificador = 2;
+                        punts -= 7;
+                        break;
+                    case 9:
+                        lastPunts = 10;
+                        modificador = 3;
+                        punts -= 10;
+                        break;
+                    case 10:
+                        lastPunts = 13;
+                        modificador = 3;
+                        punts -=13;
+                        break;
+                    case 11:
+                        lastPunts = 17;
+                        modificador = 4;
+                        punts -=17;
+                        break;
                 }
+                puntsText.setText("Puntos: " + punts);
+                carText.setText(modificador + "");
             }
-        });
-        editDes.addTextChangedListener(new TextWatcher() {
-            public void afterTextChanged(Editable s) {}
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.length() >0) {
-                    dexText.setText(calcularModificador(s.toString()));
-                } else{
-                    dexText.setText("-5");
-                }
-            }
-        });
-        editCon.addTextChangedListener(new TextWatcher() {
-            public void afterTextChanged(Editable s) {}
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.length() >0) {
-                    conText.setText(calcularModificador(s.toString()));
-                } else{
-                    conText.setText("-5");
-                }
-            }
-        });
-        editInt.addTextChangedListener(new TextWatcher() {
-            public void afterTextChanged(Editable s) {}
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.length() >0) {
-                    intText.setText(calcularModificador(s.toString()));
-                } else{
-                    intText.setText("-5");
-                }
-            }
-        });
-        editSab.addTextChangedListener(new TextWatcher() {
-            public void afterTextChanged(Editable s) {}
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.length() >0) {
-                    sabText.setText(calcularModificador(s.toString()));
-                } else{
-                    sabText.setText("-5");
-                }
-            }
-        });
-        editCar.addTextChangedListener(new TextWatcher() {
-            public void afterTextChanged(Editable s) {}
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.length() >0) {
-                    carText.setText(calcularModificador(s.toString()));
-                } else{
-                    carText.setText("-5");
-                }
             }
         });
     }
-
-    static String calcularModificador(String puntosStr){
-            int puntos = Integer.parseInt(puntosStr);
-            if(puntos == 7){
-                punts += 4;
-                lastOp = -4;
-            } else if(puntos == 8){
-                punts += 2;
-                lastOp = -2;
-            } else if(puntos == 9){
-                punts += 1;
-                lastOp = -1;
-            }else if(puntos == 10){
-                punts += 0;
-                lastOp = 0;
-            }else if(puntos == 11){
-                punts -= 1;
-                lastOp = 1;
-            }else if(puntos == 12){
-                punts -= 2;
-                lastOp = 2;
-            }else if(puntos == 13){
-                punts -= 3;
-                lastOp = 3;
-            }else if(puntos == 14){
-                punts -= 5;
-                lastOp = 5;
-            }else if(puntos == 15){
-                punts -= 7;
-                lastOp = 7;
-            }else if(puntos == 16){
-                punts -= 10;
-                lastOp = 10;
-            }else if(puntos == 17){
-                punts -= 13;
-                lastOp = 13;
-            }else if(puntos == 18){
-                punts -= 17;
-                lastOp = 17;
-            } else if(puntos < 7){
-
-            }else{
-                return "-5";
-            }
-            puntsText.setText("Punts: " + punts);
-            int modificador = (int) ((puntos - 10) / 2);
-            if(modificador<0){
-                modificador--;
-            }
-            return modificador + "";
-    }
-
     }
