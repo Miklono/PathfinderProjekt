@@ -9,19 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StatsPage"></activity>
-        <activity android:name=".PaginaPrincipal" />
+        <activity android:name=".StatsPage" android:screenOrientation="portrait"></activity>
+        <activity android:name=".PaginaPrincipal"  android:screenOrientation="portrait"/>
         <activity android:name=".data.jighjdsf" />
         <activity
             android:name=".ui.login.PaginaPrincipal"
             android:label="@string/title_activity_pagina_principal" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".MainActivity"
+        android:screenOrientation="portrait">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
     </application>
 
 </manifest>
